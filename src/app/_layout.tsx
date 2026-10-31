@@ -2,6 +2,7 @@ import { DefaultTheme, ThemeProvider } from 'expo-router';
 import Stack from 'expo-router/stack';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { AnimatedSplashOverlay } from '@/components/animated-icon';
 import { Brand } from '@/constants/theme';
@@ -21,10 +22,12 @@ const BrandTheme = {
 
 export default function RootLayout() {
   return (
-    <ThemeProvider value={BrandTheme}>
-      <StatusBar style="light" />
-      <Stack screenOptions={{ headerShown: false }} />
-      <AnimatedSplashOverlay />
-    </ThemeProvider>
+    <SafeAreaProvider>
+      <ThemeProvider value={BrandTheme}>
+        <StatusBar style="light" />
+        <Stack screenOptions={{ headerShown: false }} />
+        <AnimatedSplashOverlay />
+      </ThemeProvider>
+    </SafeAreaProvider>
   );
 }
